@@ -35,13 +35,13 @@ Importante: Você pode utilizar qualquer cliente http ao invés do curl. Ex: Pos
 
 ### Docker
 
-Na raíz do projeto, digite o comando abaixo:
+Na raíz do projeto, digite o comando abaixo (a aplicação ficará disponível enquanto esse comando estiver rodando):
 
 ```sh
 docker-compose up
 ```
 
-Você deverá ver uma série de informações referentes a inicialização dos `containers` da aplicação.
+Você deverá ver uma série de informações referentes a inicialização dos *containers* da aplicação.
 
 Em uma nova aba de terminal, digite o comando abaixo:
 
