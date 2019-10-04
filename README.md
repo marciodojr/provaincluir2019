@@ -1,10 +1,17 @@
 # Incluir Tecnologia - Prova de Desenvolvedor - 2019
 
-Prova para estágio de desenvolvedor Web na Incluir Tecnologia.
+Esta prova tem como objetivo verificar se o candidato possui as seguintes competências:
+
+1. Entendimento básico de git/github.
+2. Entendimento básico de configuração de um ambiente de desenvolvimento Web no Linux ou sistema equivalente.
+3. Entendimento básico de PHP, orientação a objetos e padrões de estilo de código.
+4. Capacidade de realizar pequenas modificações em aplicações existentes.
+
+O candidato deverá executar as atividades definidas na seção **6. Atividade avaliativa**. As seções 1. a 5. descrevem instruções de instalação, uso e dicas sobre o projeto.
 
 ---
 
-## Configuração mínima para executar o projeto
+## 1. Configuração mínima para executar o projeto
 
 - git
 - Docker e Docker Compose
@@ -13,7 +20,7 @@ Prova para estágio de desenvolvedor Web na Incluir Tecnologia.
 
 ---
 
-## Instalação
+## 2. Instalação
 
 ### Docker
 
@@ -31,7 +38,7 @@ Importante: Você pode utilizar qualquer cliente http ao invés do curl. Ex: Pos
 
 ---
 
-## Inicialização
+## 3. Inicialização
 
 ### Docker
 
@@ -80,7 +87,9 @@ vendor/bin/doctrine-migrations migrations:migrate
 ```
 ---
 
-## Doctrine ORM
+## 4. Dicas:
+
+### Doctrine ORM
 
 O banco de dados do projeto é manipulado pelo Doctrine ORM. As entidades do banco de dados se encontram no diretório src/Entities.
 
