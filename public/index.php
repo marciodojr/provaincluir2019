@@ -17,15 +17,14 @@ if (!getenv('DEV_MODE')) { // Should be set to true in production
     $containerBuilder->enableCompilation(__DIR__ . '/../var/cache');
 }
 
-// Set up settings
-$settings = require __DIR__ . '/../app/settings.php';
-$settings($containerBuilder);
+// Set up settings & dependencies
+$settings = require __DIR__ . '/../config/settings.php';
+$dependencies = require __DIR__ . '/../config/dependencies.php';
 
-// Set up dependencies
-$dependencies = require __DIR__ . '/../app/dependencies.php';
-$dependencies($containerBuilder);
-
-// Build PHP-DI Container instance
+$containerBuilder->addDefinitions([
+    'settings' => $settings
+]);
+$containerBuilder->addDefinitions($dependencies);
 $container = $containerBuilder->build();
 
 // Instantiate the app
@@ -34,7 +33,7 @@ $app = \DI\Bridge\Slim\Bridge::create($container);
 $callableResolver = $app->getCallableResolver();
 
 // Register routes
-$routes = require __DIR__ . '/../app/routes.php';
+$routes = require __DIR__ . '/../config/routes.php';
 $routes($app);
 
 $displayErrorDetails = $container->get('settings')['displayErrorDetails'];
