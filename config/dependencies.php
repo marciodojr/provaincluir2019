@@ -37,11 +37,13 @@ return [
     EntityManager::class => factory(function (ContainerInterface $c) {
         $settings = $c->get('settings');
 
+        $cache = $settings['doctrine.meta.cache'] ? new \Doctrine\Common\Cache\ApcuCache() : null;
+
         $config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
             $settings['doctrine.meta.entity_path'],
             $settings['doctrine.meta.auto_generate_proxies'],
             $settings['doctrine.meta.proxy_dir'],
-            $settings['doctrine.meta.cache'],
+            $cache,
             false
         );
 
