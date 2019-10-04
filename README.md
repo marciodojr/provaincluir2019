@@ -1,50 +1,90 @@
 # Incluir Tecnologia - Prova de Desenvolvedor - 2019
 
-Este repositório faz o uso da API REST do Portal da Transparência do Governo Federal para fazer consultas de informações relacionadas ao Bolsa Família.
+Prova para estágio de desenvolvedor Web na Incluir Tecnologia.
 
-# Configuração mínima para executar o projeto
+---
 
-## Docker
+## Configuração mínima para executar o projeto
 
-O Docker é um sistema de virtualização que permite criar, testar e implementar aplicações em um ambiente isolado, chamado de container. Uma imagem de container do docker é um pacote de software leve, independente e executável que inclui somente os recursos necessários para executar um determinado serviço. Dessa forma, por meio do Docker, as incompatibilidades entre os sistemas disponíveis são reduzidas, pois todos os serviços utilizados por uma aplicação podem ser disponibilizados através de imagens de container do docker, sem a necessidade de fazer a instalação desses softwares de serviços diretamente nos sistemas.
+- git
+- Docker e Docker Compose
+- Bom editor de código (é sugerido o **VSCode** com a extenção **PHP Intelephense**)
+- **curl** e **jq** para realização das requisições http.
 
-Para verificar quais serviços este projeto utiliza por meio de imagens de containers do Docker, abra o arquivo __docker-compose.yml__ no diretório raíz do projeto.
+---
 
-Documentação do Docker: <https://docs.docker.com/get-started/>
+## Instalação
 
-## Instalar o Docker e o Docker Compose
+### Docker
 
 -   Docker (CE): https://docs.docker.com/install/linux/docker-ce/ubuntu/
 -   Docker Compose: https://docs.docker.com/compose/install/
 -   Etapas de pós-instalação: https://docs.docker.com/install/linux/linux-postinstall/
 
-## Execução
+Importante: Para ver como este projeto utiliza o docker, abra o arquivo __docker-compose.yml__ no diretório raíz.
 
-Comando para executar todos os containers de serviços contidos no arquivo __docker-compose.yml__:
+### curl e jq
+
+- No linux digite o seguinte comando no terminal: `sudo apt install curl jq -y`
+
+Importante: Você pode utilizar qualquer cliente http ao invés do curl. Ex: Postman, Chrome, Firefox, ...
+
+---
+
+## Inicialização
+
+### Docker
+
+Na raíz do projeto, digite o comando abaixo:
 
 ```sh
 docker-compose up
 ```
 
-### Acessar containers
+Você deverá ver uma série de informações referentes a inicialização dos `containers` da aplicação.
 
-Para acessar o container do PHP:
+Em uma nova aba de terminal, digite o comando abaixo:
 
 ```sh
-docker exec -it incluir2019-php
+docker exec -it incluir2019-php bash
 ```
 
-Para instalar todas as dependências de PHP do projeto, o seguinte comando deve ser executado dentro do container do PHP:
+Com esse comando você terá acesso ao **Container do PHP** que roda a aplicação.
+
+### Instalação de dependências
+
+Para instalar todas as dependências de PHP do projeto, o seguinte comando deve ser executado dentro do **Container do PHP**:
 
 ```sh
 composer install
 ```
 
-Para acessar o container do MySQL:
+### Acessando o banco de Dados
+
+O banco de dados pode ser acessado via **Container do Mysql**. Digite o comando abaixo em uma nova aba do terminal.
 
 ```sh
-docker exec -it incluir2019-sql
+docker exec -it incluir2019-sql bash
+mysql -u provaincluir2019 -p provaincluir2019
+# password: provaincluir2019
+show tables;
+# Empty set (0.00 sec)
 ```
+
+### Criando tabelas do Banco de Dados
+
+Dentro do **Container do PHP**, rode o comando abaixo:
+
+```
+vendor/bin/doctrine-migrations migrations:migrate
+```
+---
+
+## Doctrine ORM
+
+O banco de dados do projeto é manipulado pelo Doctrine ORM. As entidades do banco de dados se encontram no diretório src/Entities.
+
+Documentação do Doctrine ORM: <https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/working-with-objects.html#working-with-objects>
 
 ### Execução de testes
 
@@ -70,23 +110,8 @@ vendor/bin/phpunit --filter BolsaFamiliaMunicipioTest
 vendor/bin/phpunit --filter BolsaFamiliaMunicipioTest --testdox
 ```
 
--   Para executar o teste de um método específico
+-   Para executar um teste específico
 
 ```sh
 vendor/bin/phpunit --filter testBolsaFamiliaMunicipioSuccess --testdox
 ```
-# Bibliotecas utilizadas no projeto
-
-## Slim 4
-
-O Slim é um micro framework de PHP voltado para a construção de aplicações web e APIs, funcionando basicamente como um dispatcher que recebe uma requisição HTTP, faz a chamada de uma função específica e retorna uma resposta HTTP.
-
-Documentação do Slim 4: <http://www.slimframework.com/docs/v4/>
-
-## Doctrine ORM
-
-O banco de dados do projeto é manipulado pelo Doctrine ORM. As entidades do banco de dados se encontram no diretório src/Entities.
-
-Documentação do Doctrine ORM: <https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/working-with-objects.html#working-with-objects>
-
-## PHP-DI
