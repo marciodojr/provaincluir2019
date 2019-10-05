@@ -178,10 +178,125 @@ O banco de dados é manipulado via ORM. Consulte a documentação do [Doctrine](
 ### Introdução
 
 1. Consultar o site de dados do governo e baixar a [lista de códigos do SIAFI](http://dados.gov.br/dataset/lista-de-orgaos-do-siafi).
-2. Encontrar o código do SIAFI referente a Universidade Federal de Itajubá (Órgão UGE Código = 26261).
+2. Encontrar o código do SIAFI referente a Universidade Federal de Itajubá (Órgão UGE Código).
 3. Acessar a documentação de [API do governo](http://www.transparencia.gov.br/swagger-ui.html#!/Licita231245es32do32Poder32Executivo32Federal/licitacoesUsingGET).
-4. Inserir data inicial 01/01/2016, data final 31/01/2016, código do orgão de Itajubá e clicar em "Testar Agora!".
-5. Você verá um *json* de resultado das licitações.
+4. Inserir data inicial 01/01/2016, data final 31/01/2016, código da Universidade Federal de Itajubá e clicar em "Testar Agora!".
+5. Você verá um *json* de resultado das licitações parecido com o recorte abaixo:
+
+```json
+[
+  {
+    "id": 230912613,
+    "dataResultadoCompra": "02/02/2016",
+    "dataAbertura": "27/01/2016",
+    "dataReferencia": "12/01/2016",
+    "dataPublicacao": "12/01/2016",
+    "situacaoCompra": {
+      "codigo": 103,
+      "descricao": "Publicado"
+    },
+    "modalidadeLicitacao": {
+      "descricao": "Pregão - Registro de Preço"
+    },
+    "instrumentoLegal": null,
+    "valor": 0,
+    "municipio": {
+      "codigoIBGE": "3132404",
+      "nomeIBGE": "ITAJUBÁ",
+      "pais": "BRASIL",
+      "uf": {
+        "sigla": "MG",
+        "nome": "MINAS GERAIS"
+      }
+    },
+    "unidadeGestora": {
+      "codigo": "153030",
+      "nome": "UNIVERSIDADE FEDERAL DE ITAJUBA/MG",
+      "descricaoPoder": "EXECUTIVO",
+      "orgaoVinculado": {
+        "codigoSIAFI": "26261",
+        "cnpj": "",
+        "nome": "Universidade Federal de Itajubá",
+        "naturezaJuridica": {
+          "codigo": "0000    ",
+          "descricao": "Sem informação",
+          "codigoTipo": "0 ",
+          "descricaoTipo": "Sem informação"
+        },
+        "sigla": ""
+      },
+      "orgaoMaximo": {
+        "codigo": "26000",
+        "nome": "Ministério da Educação",
+        "sigla": ""
+      },
+      "existeFatoDespesa": false,
+      "existeFatoReceita": false
+    },
+    "licitacao": {
+      "numero": "000022016",
+      "objeto": "Objeto: Pregão Eletrônico -  Registro de preços para eventual compra de pneus, incluindo os serviços de montagem, alinhamento, balanceamento, cambagem e caster para os veículos oficiais da UNIFEI/Itajubá, conforme condições, quantidades e exigências estabelecidas neste Edital e seus anexos.",
+      "numeroProcesso": "23088019594201508",
+      "contatoResponsavel": "LEANDRO LOPES TRINDADE"
+    }
+  },
+  {
+    "id": 231420069,
+    "dataResultadoCompra": "07/01/2016",
+    "dataAbertura": "07/01/2016",
+    "dataReferencia": "22/12/2015",
+    "dataPublicacao": "22/12/2015",
+    "situacaoCompra": {
+      "codigo": 103,
+      "descricao": "Publicado"
+    },
+    "modalidadeLicitacao": {
+      "descricao": "Pregão - Registro de Preço"
+    },
+    "instrumentoLegal": null,
+    "valor": 0,
+    "municipio": {
+      "codigoIBGE": "3132404",
+      "nomeIBGE": "ITAJUBÁ",
+      "pais": "BRASIL",
+      "uf": {
+        "sigla": "MG",
+        "nome": "MINAS GERAIS"
+      }
+    },
+    "unidadeGestora": {
+      "codigo": "153030",
+      "nome": "UNIVERSIDADE FEDERAL DE ITAJUBA/MG",
+      "descricaoPoder": "EXECUTIVO",
+      "orgaoVinculado": {
+        "codigoSIAFI": "26261",
+        "cnpj": "",
+        "nome": "Universidade Federal de Itajubá",
+        "naturezaJuridica": {
+          "codigo": "0000    ",
+          "descricao": "Sem informação",
+          "codigoTipo": "0 ",
+          "descricaoTipo": "Sem informação"
+        },
+        "sigla": ""
+      },
+      "orgaoMaximo": {
+        "codigo": "26000",
+        "nome": "Ministério da Educação",
+        "sigla": ""
+      },
+      "existeFatoDespesa": false,
+      "existeFatoReceita": false
+    },
+    "licitacao": {
+      "numero": "001152015",
+      "objeto": "Objeto: Pregão Eletrônico -  Registro de preços para eventual compra de pneus, incluindo os serviços de montagem, alinhamento, balanceamento, cambagem e caster para os veículos oficiais da UNIFEI/Itajubá.",
+      "numeroProcesso": "23088019594201508",
+      "contatoResponsavel": ""
+    }
+  }
+]
+```
 
 ### Descrição da Prova
 
@@ -194,12 +309,12 @@ A prova consiste em consultar os dados do governo (via api), salvar no banco de 
       2.  municipio: deve ser uma associação do tipo ManyToOne com a entidade Municipio (exatamente como feito na entidade BolsaFamilia)
       3.  dataReferencia: campo dataReferencia do json
       4.  nomeOrgao: campo unidadeGestora.orgaoVinculado.nome
-      4.  codigoOrgao: campo unidadeGestora.orgaoVinculado.codigoSIAFI
-      5.  dataPublicacao: campo dataPublicacao
-      6.  dataResultadoCompra: campo $dataResultadoCompra
-      7.  objetoLicitacao (length=1000): campo licitacao.objeto
-      8.  numeroLicitacao: campo licitacao.numero
-      9.  responsavelContrato: campo licitacao.contratoResponsavel;
+      5.  codigoOrgao: campo unidadeGestora.orgaoVinculado.codigoSIAFI
+      6.  dataPublicacao: campo dataPublicacao
+      7.  dataResultadoCompra: campo $dataResultadoCompra
+      8.  objetoLicitacao (length=1000): campo licitacao.objeto
+      9.  numeroLicitacao: campo licitacao.numero
+      10. responsavelContrato: campo licitacao.contratoResponsavel;
    2. Adicionar o atributo `licitacoes` na entidade Municipio para mapeamento OneToMany para licitações (simular ao feito no atributo `bolsaFamilia`).
    3. Validar o mapeamento via comando `vendor/bin/doctrine orm:validate-schema` (dentro do **Container do PHP**)
    4. Gerar uma migração via comando `vendor/bin/doctrine-migrations migrations:diff` (dentro do **Container do PHP**)
