@@ -394,4 +394,4 @@ Resultado:
 ### Entrega
 
 1. A data de entrega da prova é definida pelo candidato ao receber a prova. Não serão aceitas provas após o prazo.
-2. A prova deve ser armazenada no github do candidato e ele deve enviar um link para acesso no email `suporte@incluirtecnologia.com.br` com o link de acesso.
+2. A prova deve ser armazenada no github do candidato e ele deve enviar o link de acesso para o email `suporte@incluirtecnologia.com.br`.
