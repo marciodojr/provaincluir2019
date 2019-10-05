@@ -11,15 +11,10 @@ require 'vendor/autoload.php';
 
 $settings = require 'settings.php';
 
-
-$cache = $settings['doctrine.meta.cache'] ? new \Doctrine\Common\Cache\ApcuCache() : null;
-
 $config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
     $settings['doctrine.meta.entity_path'],
     (bool) $settings['doctrine.meta.auto_generate_proxies'],
-    $settings['doctrine.meta.proxy_dir'],
-    $cache,
-    false
+    $settings['doctrine.meta.proxy_dir']
 );
 
 $platform = new \Doctrine\DBAL\Platforms\MySQL57Platform();

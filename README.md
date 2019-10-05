@@ -75,7 +75,6 @@ docker exec -it incluir2019-sql bash
 mysql -u provaincluir2019 -p provaincluir2019
 # password: provaincluir2019
 show tables;
-# Empty set (0.00 sec)
 ```
 
 ### Criando tabelas do Banco de Dados
@@ -85,6 +84,7 @@ Dentro do **Container do PHP**, rode o comando abaixo:
 ```
 vendor/bin/doctrine-migrations migrations:migrate
 ```
+
 ---
 
 ## 4. Dicas:

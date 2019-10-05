@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Services\Transparencia;
+use Doctrine\ORM\EntityManager;
 use GuzzleHttp\Client;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
