@@ -330,8 +330,8 @@ A prova consiste em consultar os dados do governo (via api), salvar no banco de 
    5. Verificar (acessando o banco de dados) se a tabela de licitações foi preenchida. Não se preocupe se ao invés de acentos você ver o símbolo "�".
 
 3. Serviços
-    1. Dentro da Pasta Services/Db criar uma classe para consultas de licitações (similar ao feito para o BolsaFamilia).
-    2. Dentro da pasta Actions criar uma pasta chamada Licitacao e dentro dela uma action com o nome Licitacao.
+    1. Dentro da Pasta `Services/Db` criar uma classe para consultas de licitações (similar ao feito para o BolsaFamilia).
+    2. Dentro da pasta `Actions` criar uma pasta chamada `Licitacao` e dentro dela uma action com o nome `Licitacao`.
 
 4. Action e Rota
    1. Criar uma rota que utiliza o serviço criado e retorna os resultados de licitações (simular ao feito na action `src/Actions/BolsaFamilia/BolsaFamiliaMes`).
@@ -339,8 +339,6 @@ A prova consiste em consultar os dados do governo (via api), salvar no banco de 
 
 5. Utilizando a rota criada:
     1. utilize o curl para verificar se os dados estão sendo retornados pela API (similar ao descrito na **Seção 4**).
-
-
 
 ```sh
 curl -X GET http://localhost:8888/municipio/3132404/licitacoes?data_inicial=06/04/2016&data_final=01/05/2016 | jq
