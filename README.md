@@ -340,11 +340,12 @@ A prova consiste em consultar os dados do governo (via api), salvar no banco de 
 5. Utilizando a rota criada:
     1. utilize o curl para verificar se os dados estão sendo retornados pela API (similar ao descrito na **Seção 4**).
 
+
+6. Resultado Esperado:
+
 ```sh
 curl -X GET http://localhost:8888/municipio/3132404/licitacoes?data_inicial=06/04/2016&data_final=01/05/2016 | jq
 ```
-
-Resultado:
 
 ```json
 {
