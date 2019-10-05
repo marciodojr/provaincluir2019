@@ -49,6 +49,11 @@ class Municipio implements JsonSerializable
      */
     private $bolsaFamilia;
 
+    /**
+     * @OneToMany(targetEntity="Licitacao", mappedBy="municipio")
+     */
+    private $licitacoes;
+
     public function __construct(int $codigoIbge, string $nomeCidade)
     {
         $this->codigoIbge = $codigoIbge;

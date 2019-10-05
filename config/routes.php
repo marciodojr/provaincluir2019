@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Actions\BolsaFamilia\BolsaFamiliaMes;
+use App\Actions\Licitacao\Licitacao;
 use App\Actions\Municipio;
 use App\Actions\Root;
 use Slim\App;
@@ -27,6 +28,10 @@ return function (App $app) {
             $group->group('/bolsa-familia', function(Group $group) {
                 // pode ser acessado via GET http://localhost:8888/municipio/{codigoIbge}/bolsa-familia
                 $group->get('', BolsaFamiliaMes::class);
+            });
+            $group->group('/licitacoes', function(Group $group) {
+                // pode ser acessado via GET http://localhost:8888/municipio/{codigoIbge}/licitacoes
+                $group->get('', Licitacao::class);
             });
         });
     });

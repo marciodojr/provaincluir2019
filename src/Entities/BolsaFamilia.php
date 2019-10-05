@@ -41,7 +41,7 @@ class BolsaFamilia implements JsonSerializable
     private $municipio;
 
     /**
-     * @Column(name="data_referencia", type="date")
+     * @Column(name="data_referencia", type="date", nullable=false)
      */
     private $dataReferencia;
 

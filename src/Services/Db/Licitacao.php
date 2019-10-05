@@ -2,10 +2,10 @@
 
 namespace App\Services\Db;
 
-use App\Entities\BolsaFamilia as BolsaFamiliaEntity;
+use App\Entities\Licitacao as LicitacaoEntity;
 use Doctrine\ORM\EntityManager;
 
-class BolsaFamilia
+class Licitacao
 {
     private $em;
 
@@ -30,10 +30,10 @@ class BolsaFamilia
         $qb = $this->em->createQueryBuilder();
 
         $results = $qb
-            ->select('b')
-            ->from(BolsaFamiliaEntity::class, 'b')
-            ->join('b.municipio', 'm')
-            ->add('where', 'm.codigoIbge = :codigoIbge and b.dataReferencia between :startReferenceDate and :endReferenceDate')
+            ->select('l')
+            ->from(LicitacaoEntity::class, 'l')
+            ->join('l.municipio', 'm')
+            ->add('where', 'm.codigoIbge = :codigoIbge and l.dataReferencia between :startReferenceDate and :endReferenceDate')
             ->setParameters([
                 'codigoIbge' => $codigoIbge,
                 'startReferenceDate' => $dataInicial,
