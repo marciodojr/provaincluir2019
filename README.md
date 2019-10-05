@@ -7,16 +7,16 @@ Esta prova tem como objetivo verificar se o candidato possui as seguintes compet
 3. Entendimento básico de PHP, orientação a objetos e padrões de estilo de código.
 4. Capacidade de realizar pequenas modificações em aplicações existentes.
 
-O candidato deverá executar as atividades definidas na seção **6. Atividade avaliativa**. As seções 1. a 5. descrevem instruções de instalação, uso e dicas sobre o projeto.
+O candidato deverá executar as atividades definidas na seção **6. Atividade avaliativa**. As seções **1.** a **5.** descrevem instruções de instalação, uso e dicas sobre o projeto.
 
 ---
 
-## 1. Configuração mínima para executar o projeto
+## 1. Configuração mínima
 
 - git
 - Docker e Docker Compose
 - Bom editor de código (é sugerido o **VSCode** com a extenção **PHP Intelephense**)
-- **curl** e **jq** para realização das requisições http.
+- **curl** e **jq** para realização das requisições http e estilização da resposta.
 
 ---
 
