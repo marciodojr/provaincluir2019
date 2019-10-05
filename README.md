@@ -7,7 +7,7 @@ Esta prova tem como objetivo verificar se o candidato possui as seguintes compet
 3. Entendimento básico de PHP, orientação a objetos e padrões de estilo de código.
 4. Capacidade de realizar pequenas modificações em aplicações existentes.
 
-O candidato deverá executar as atividades definidas na seção **6. Atividade avaliativa**. As seções **1.** a **5.** descrevem instruções de instalação, uso e dicas sobre o projeto.
+O candidato deverá executar as atividades definidas na seção **5. Atividade avaliativa**. As seções **1.** a **4.** descrevem instruções de instalação, uso e dicas sobre o projeto.
 
 ---
 
@@ -60,7 +60,7 @@ Com esse comando você terá acesso ao **Container do PHP** que roda a aplicaç�
 
 ### Instalação de dependências
 
-Para instalar todas as dependências de PHP do projeto, o seguinte comando deve ser executado dentro do **Container do PHP**:
+Para instalar todas as dependências de PHP do projeto, o seguinte comando deve ser executado (dentro do **Container do PHP**):
 
 ```sh
 composer install
@@ -73,7 +73,9 @@ Dentro do **Container do PHP**, rode o comando abaixo:
 vendor/bin/doctrine-migrations migrations:migrate
 ```
 
-### Acessando o banco de Dados
+serão criadas três tabelas: `municipio`, `bolsa_familia` e `doctrine_migration_versions`.
+
+### Acessando o Banco de Dados
 
 O banco de dados pode ser acessado via **Container do Mysql**. Digite o comando abaixo em uma nova aba do terminal.
 
@@ -86,7 +88,7 @@ show tables;
 
 ---
 
-## 4. Sobre o Projeto:
+## 4. Sobre o Projeto
 
 
 ### Realizando consultas
@@ -171,7 +173,7 @@ Resultado:
 
 O banco de dados é manipulado via ORM. Consulte a documentação do [Doctrine](https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/basic-mapping.html#basic-mapping) em caso de dúvidas.
 
-## 6. Atividade avaliativa
+## 5. Atividade avaliativa
 
 ### Introdução
 
