@@ -165,43 +165,6 @@ Resultado:
 }
 ```
 
-
-### Doctrine ORM
-
-O banco de dados do projeto é manipulado pelo Doctrine ORM. As entidades do banco de dados se encontram no diretório src/Entities.
-
-Documentação do Doctrine ORM: <https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/working-with-objects.html#working-with-objects>
-
-### Execução de testes
-
-Os testes desse projeto são construídos a partir do framework de teste para PHP chamado [PhpUnit](https://phpunit.readthedocs.io/pt_BR/latest/).
-
-Os comandos seguintes devem ser executados dentro do container do PHP.
-
--   Para executar todos os testes:
-
-```sh
-vendor/bin/phpunit
-```
-
--   Para executar todos os testes de uma classe específica:
-
-```sh
-vendor/bin/phpunit --filter BolsaFamiliaMunicipioTest
-```
-
--   Para executar todos os testes de uma classe específica exibindo mais detalhes
-
-```sh
-vendor/bin/phpunit --filter BolsaFamiliaMunicipioTest --testdox
-```
-
--   Para executar um teste específico
-
-```sh
-vendor/bin/phpunit --filter testBolsaFamiliaMunicipioSuccess --testdox
-```
-
 ## 6. Atividade avaliativa
 
 ### Introdução
