@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Index;
 use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\OneToMany;
 
 use JsonSerializable;
 
@@ -43,6 +44,11 @@ class Municipio implements JsonSerializable
      */
     private $nomeCidade;
 
+    /**
+     * @OneToMany(targetEntity="BolsaFamilia", mappedBy="municipio")
+     */
+    private $bolsaFamilia;
+
     public function __construct(int $codigoIbge, string $nomeCidade)
     {
         $this->codigoIbge = $codigoIbge;
@@ -53,9 +59,6 @@ class Municipio implements JsonSerializable
      * Access private properties like public properties (in read-only mode)
      *
      * Ex: $municipio->$codigoIbg
-     *
-     * @param [type] $name
-     * @return void
      */
     public function __get($name)
     {
