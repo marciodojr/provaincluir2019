@@ -65,6 +65,13 @@ Para instalar todas as dependências de PHP do projeto, o seguinte comando deve 
 ```sh
 composer install
 ```
+### Criando tabelas do Banco de Dados
+
+Dentro do **Container do PHP**, rode o comando abaixo:
+
+```
+vendor/bin/doctrine-migrations migrations:migrate
+```
 
 ### Acessando o banco de Dados
 
@@ -75,14 +82,6 @@ docker exec -it incluir2019-sql bash
 mysql -u provaincluir2019 -p provaincluir2019
 # password: provaincluir2019
 show tables;
-```
-
-### Criando tabelas do Banco de Dados
-
-Dentro do **Container do PHP**, rode o comando abaixo:
-
-```
-vendor/bin/doctrine-migrations migrations:migrate
 ```
 
 ---
