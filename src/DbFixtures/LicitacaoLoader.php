@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\DbFixtures;
 
-use App\Entities\BolsaFamilia;
 use App\Entities\Licitacao;
 use App\Entities\Municipio;
 use App\Services\Transparencia;
@@ -16,15 +15,15 @@ use Doctrine\Common\Persistence\ObjectManager;
 class LicitacaoLoader implements FixtureInterface
 {
     private $tranparencia;
-    private $anoInicial;
-    private $anoFinal;
+    private $dataInicial;
+    private $dataFinal;
     private $codigoSIAFI;
 
-    public function __construct(Transparencia $tr, int $anoInicial, int $anoFinal, string $codigoSIAFI)
+    public function __construct(Transparencia $tr, DateTime $dataInicial, DateTime $dataFinal, string $codigoSIAFI)
     {
         $this->tranparencia = $tr;
-        $this->anoInicial = $anoInicial;
-        $this->anoFinal = $anoFinal;
+        $this->dataInicial = $dataInicial;
+        $this->dataFinal = $dataFinal;
         $this->codigoSIAFI = $codigoSIAFI;
     }
 
@@ -64,13 +63,10 @@ class LicitacaoLoader implements FixtureInterface
     private function getIntervals()
     {
         $intervals = [];
-        $endDate = new DateTime($this->anoFinal . '-12-31');
-
-        for ($startDate = new DateTime($this->anoInicial . '-01-01'); $startDate < $endDate; $startDate->add(new DateInterval('P1M'))) {
-
+        for ($i = clone $this->dataInicial; $i < $this->dataFinal; $i->add(new DateInterval('P1M'))) {
             $intervals[] =  [
-                'data_inicial' => $startDate->format('d/m/Y'),
-                'data_final' => $startDate->format('t/m/Y')
+                'data_inicial' => $i->format('d/m/Y'),
+                'data_final' => $i->format('t/m/Y')
             ];
         }
 
@@ -86,7 +82,7 @@ class LicitacaoLoader implements FixtureInterface
         $dataResultadoCompra = $data['dataResultadoCompra'] ? DateTime::createFromFormat('d/m/Y', $data['dataResultadoCompra']) : null;
         $objetoLicitacao = $data['licitacao']['objeto'];
         $numeroLicitacao = $data['licitacao']['numero'];
-        $responsavelContrato = $data['licitacao']['contatoResponsavel'];
+        $responsavelContato = $data['licitacao']['contatoResponsavel'];
 
         return new Licitacao(
             $m,
@@ -97,7 +93,7 @@ class LicitacaoLoader implements FixtureInterface
             $dataResultadoCompra,
             $objetoLicitacao,
             $numeroLicitacao,
-            $responsavelContrato
+            $responsavelContato
         );
     }
 }

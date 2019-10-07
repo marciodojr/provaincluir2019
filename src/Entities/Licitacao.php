@@ -76,9 +76,9 @@ class Licitacao implements JsonSerializable
     private $numeroLicitacao;
 
     /**
-     * @Column(name="responsavel_contrato", type="string", length=255)
+     * @Column(name="responsavel_contato", type="string", length=255)
      */
-    private $responsavelContrato;
+    private $responsavelContato;
 
     public function __construct(
         Municipio $municipio,
@@ -89,7 +89,7 @@ class Licitacao implements JsonSerializable
         ?DateTime $dataResultadoCompra,
         string $objetoLicitacao,
         string $numeroLicitacao,
-        string $responsavelContrato
+        string $responsavelContato
     ) {
         $this->municipio = $municipio;
         $this->dataReferencia =  $dataReferencia;
@@ -99,7 +99,7 @@ class Licitacao implements JsonSerializable
         $this->dataResultadoCompra = $dataResultadoCompra;
         $this->objetoLicitacao = $objetoLicitacao;
         $this->numeroLicitacao = $numeroLicitacao;
-        $this->responsavelContrato = $responsavelContrato;
+        $this->responsavelContato = $responsavelContato;
     }
 
     /**
@@ -122,7 +122,7 @@ class Licitacao implements JsonSerializable
             'data_resultado_compra' => $this->dataResultadoCompra ? $this->dataResultadoCompra->format('d/m/Y') : null,
             'objeto_licitacao' => $this->objetoLicitacao,
             'numero_licitacao' => $this->numeroLicitacao,
-            'responsavel_contrato' => $this->responsavelContrato,
+            'responsavel_contato' => $this->responsavelContato,
         ];
     }
 }

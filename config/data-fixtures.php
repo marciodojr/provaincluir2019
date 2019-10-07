@@ -46,6 +46,6 @@ $loader->addFixture(new MunicipioLoader());
 $loader->addFixture(new BolsaFamiliaLoader($transparencia, [2016, 2017, 2018], [3132404, 3152501]));
 
 // Licitacao nos anos 2016, 2017, 2018
-$loader->addFixture(new LicitacaoLoader($transparencia, 2016, 2018, '26261'));
+$loader->addFixture(new LicitacaoLoader($transparencia, new Datetime('2016-01-01'), new DateTime('2018-12-31'), '26261'));
 
 $executor->execute($loader->getFixtures());

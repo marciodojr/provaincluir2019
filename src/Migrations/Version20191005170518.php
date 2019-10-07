@@ -22,7 +22,7 @@ final class Version20191005170518 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE licitacao (id INT AUTO_INCREMENT NOT NULL, municipio_id INT DEFAULT NULL, data_referencia DATE NOT NULL, codigo_orgao INT NOT NULL, data_publicacao DATE NOT NULL, data_resultado_compra DATE DEFAULT NULL, objeto_licitacao VARCHAR(500) NOT NULL, numero_licitacao VARCHAR(30) NOT NULL, responsavel_contrato VARCHAR(255) NOT NULL, INDEX IDX_62ED505B58BC1BE0 (municipio_id), INDEX data_referencia_idx (data_referencia), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE licitacao (id INT AUTO_INCREMENT NOT NULL, municipio_id INT DEFAULT NULL, data_referencia DATE NOT NULL, codigo_orgao INT NOT NULL, data_publicacao DATE NOT NULL, data_resultado_compra DATE DEFAULT NULL, objeto_licitacao VARCHAR(500) NOT NULL, numero_licitacao VARCHAR(30) NOT NULL, responsavel_contato VARCHAR(255) NOT NULL, INDEX IDX_62ED505B58BC1BE0 (municipio_id), INDEX data_referencia_idx (data_referencia), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE licitacao ADD CONSTRAINT FK_62ED505B58BC1BE0 FOREIGN KEY (municipio_id) REFERENCES municipio (id)');
     }
 
