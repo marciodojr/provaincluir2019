@@ -324,7 +324,7 @@ A prova consiste em consultar os dados do governo (via api), salvar no banco de 
 2. Download dos dados:
 
    1. Criar um método para consulta de licitações no arquivo `src/Services/Transparencia.php` (similar ao que foi feito para o bolsa família).
-   2. Criar, na pasta `src/DbFixtures`, uma semente (ou *fixture*) que utiliza a classe `Transparencia` para consultar programaticamente a sistema do governo e salvar os dados no banco de dados (similar ao arquivo `src/DbFixtures/BolsaFamiliaLoader.php`). Utilize o código SIAFI pesquisado e as datas 01/01/2016 e 31/12/2018 (será necessário realizar várias consultas mensais).
+   2. Criar, na pasta `src/DbFixtures`, uma semente (ou *fixture*) que utiliza a classe `Transparencia` para consultar programaticamente o sistema do governo e salvar os dados no banco de dados (similar ao arquivo `src/DbFixtures/BolsaFamiliaLoader.php`). Utilize o código SIAFI pesquisado e as datas 01/01/2016 e 31/12/2018 (será necessário realizar várias consultas mensais).
    3. Inclua sua *fixture* no arquivo `config/data-fixtures.php` do mesmo modo como foi adicionada a fixture para o bolsa família. Obs.: aconselha-se a deixar comentada a linha `$loader->addFixture(new BolsaFamiliaLoad...` e descomentar quando o seu código de licitações estiver funcionando corretamente.
    4. Rodar o comando `php config/data-fixtures.php` para salvar os dados no banco de dados. Como serão feitas muitas consultas na api do governo é normal que o script demore.
    5. Verificar (acessando o banco de dados) se a tabela de licitações foi preenchida. Não se preocupe se ao invés de acentos você ver o símbolo "�".
