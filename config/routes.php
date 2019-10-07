@@ -24,10 +24,11 @@ return function (App $app) {
         $group->get('', Municipio::class);
 
         $group->group('/{codigoIbge:[0-9]+}', function(Group $group) {
-            $group->group('/bolsa-familia', function(Group $group) {
-                // pode ser acessado via GET http://localhost:8888/municipio/{codigoIbge}/bolsa-familia
-                $group->get('', BolsaFamiliaMes::class);
-            });
+            // pode ser acessado via GET http://localhost:8888/municipio/{codigoIbge}/bolsa-familia
+            $group->get('/bolsa-familia', BolsaFamiliaMes::class);
+
+            // pode ser acessado via GET http://localhost:8888/municipio/{codigoIbge}/licitacao
+            // $group->get( ...
         });
     });
 };

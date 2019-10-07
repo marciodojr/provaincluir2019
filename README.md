@@ -314,7 +314,7 @@ A prova consiste em consultar os dados do governo (via api), salvar no banco de 
       7.  dataResultadoCompra: campo $dataResultadoCompra
       8.  objetoLicitacao (length=1000): campo licitacao.objeto
       9.  numeroLicitacao: campo licitacao.numero
-      10. responsavelContrato: campo licitacao.contratoResponsavel;
+      10. responsavelContato: campo licitacao.contatoResponsavel;
    2. Adicionar o atributo `licitacoes` na entidade Municipio para mapeamento OneToMany para licitações (simular ao feito no atributo `bolsaFamilia`).
    3. Validar o mapeamento via comando `vendor/bin/doctrine orm:validate-schema` (dentro do **Container do PHP**)
    4. Gerar uma migração via comando `vendor/bin/doctrine-migrations migrations:diff` (dentro do **Container do PHP**)
@@ -324,10 +324,11 @@ A prova consiste em consultar os dados do governo (via api), salvar no banco de 
 2. Download dos dados:
 
    1. Criar um método para consulta de licitações no arquivo `src/Services/Transparencia.php` (similar ao que foi feito para o bolsa família).
-   2. Criar, na pasta `src/DbFixtures`, uma semente (ou *fixture*) que utiliza a classe `Transparencia` para consultar programaticamente o sistema do governo e salvar os dados no banco de dados (similar ao arquivo `src/DbFixtures/BolsaFamiliaLoader.php`). Utilize o código SIAFI pesquisado e as datas 01/01/2016 e 31/12/2018 (será necessário realizar várias consultas mensais).
-   3. Inclua sua *fixture* no arquivo `config/data-fixtures.php` do mesmo modo como foi adicionada a fixture para o bolsa família. Obs.: aconselha-se a deixar comentada a linha `$loader->addFixture(new BolsaFamiliaLoad...` e descomentar quando o seu código de licitações estiver funcionando corretamente.
-   4. Rodar o comando `php config/data-fixtures.php` para salvar os dados no banco de dados. Como serão feitas muitas consultas na api do governo é normal que o script demore.
-   5. Verificar (acessando o banco de dados) se a tabela de licitações foi preenchida. Não se preocupe se ao invés de acentos você ver o símbolo "�".
+   2. Criar, na pasta `src/DbFixtures`, uma semente (ou *fixture*) que utiliza a classe `Transparencia` para consultar programaticamente o sistema do governo e salvar os dados no banco de dados (similar ao arquivo `src/DbFixtures/BolsaFamiliaLoader.php`). Nome sugerido: `LicitacaoLoader.php`, essa classe deve receber o código SIAFI pesquisado e o intervalo de datas (01/01/2016, 31/12/2018). Como o limite de datas é de um mês, será necessário realizar várias consultas internas.
+   3. Inclua sua *fixture* no arquivo `config/data-fixtures.php` do mesmo modo como foi adicionada a *fixture* para o bolsa família. Obs.: aconselha-se a deixar comentada a linha `$loader->addFixture(new BolsaFamiliaLoad...` e descomentar quando o seu código de licitações estiver funcionando corretamente.
+   4. Não se preocupe caso veja o erro **Não foi possível estabelecer conexão com a API**, esse erro ocorre por falha temporária na internet, basta tentar novamente.
+   5. Rodar o comando `php config/data-fixtures.php` para salvar os dados no banco de dados. Como serão feitas muitas consultas na api do governo é normal que o script demore.
+   6. Verificar (acessando o banco de dados) se a tabela de licitações foi preenchida. Não se preocupe se ao invés de acentos você ver o símbolo "�".
 
 3. Serviços
     1. Dentro da Pasta `Services/Db` criar uma classe para consultas de licitações (similar ao feito para o BolsaFamilia).
@@ -362,7 +363,7 @@ curl -X GET http://localhost:8888/municipio/3132404/licitacoes?data_inicial=06/0
       "data_resultado_compra": "06/05/2016",
       "objeto_licitacao": "Objeto: Espelho, 4mm de espessura, 2m x 3m, inclusa instalação em parede, por meio de trilho metálico, cola ou botões franceses.",
       "numero_licitacao": "000402016",
-      "responsavel_contrato": "JOSE ALBERTO FERREIRA FILHO"
+      "responsavel_contato": "JOSE ALBERTO FERREIRA FILHO"
     },
     {
       "id": 654,
@@ -374,7 +375,7 @@ curl -X GET http://localhost:8888/municipio/3132404/licitacoes?data_inicial=06/0
       "data_resultado_compra": "25/05/2016",
       "objeto_licitacao": "Objeto: Pregão Eletrônico -  Registro de preços para eventual compra de materiais Bibliográficos (Livros) publicados por editoras internacionais.",
       "numero_licitacao": "000212016",
-      "responsavel_contrato": "JOSE ALBERTO FERREIRA FILHO"
+      "responsavel_contato": "JOSE ALBERTO FERREIRA FILHO"
     },
     {
       "id": 657,
@@ -386,7 +387,7 @@ curl -X GET http://localhost:8888/municipio/3132404/licitacoes?data_inicial=06/0
       "data_resultado_compra": "30/05/2016",
       "objeto_licitacao": "Objeto: Pregão Eletrônico -  Aquisição de materiais elétricos, eletrônicos e outros, conforme condições, quantidades e exigências estabelecidas neste Edital e seus anexos.",
       "numero_licitacao": "000222016",
-      "responsavel_contrato": "JOSE ALBERTO FERREIRA FILHO"
+      "responsavel_contato": "JOSE ALBERTO FERREIRA FILHO"
     }
   ]
 }
