@@ -58,7 +58,7 @@ class Municipio implements JsonSerializable
     /**
      * Access private properties like public properties (in read-only mode)
      *
-     * Ex: $municipio->$codigoIbg
+     * Ex: $municipio->codigoIbg
      */
     public function __get($name)
     {
