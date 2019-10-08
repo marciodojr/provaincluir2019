@@ -21,13 +21,10 @@ use JsonSerializable;
  *      }
  * )
  * @Entity
+ * @property-read int $id
+ * @property-read string $codigoIbge
+ * @property-read string $nomeCidade
  */
-
- /**
-  * @property-read int $id
-  * @property-read string $codigoIbge
-  * @property-read string $nomeCidade
-  */
 class Municipio implements JsonSerializable
 {
     /**
