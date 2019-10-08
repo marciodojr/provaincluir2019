@@ -20,7 +20,7 @@ abstract class Action
             'data' => $payloadData
         ];
 
-        $json = json_encode($payload, JSON_PRETTY_PRINT);
+        $json = json_encode($payload, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
         $response->getBody()->write($json);
         return $response->withHeader('Content-Type', 'application/json');
     }

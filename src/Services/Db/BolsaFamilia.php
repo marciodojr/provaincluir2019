@@ -23,7 +23,7 @@ class BolsaFamilia
      * @param \DateTimeInterface $dataInicial
      * @param \DateTimeInterface $dataFinal
      * @param string $codigoIbge
-     * @return void
+     * @return array
      */
     public function findBetweenDates(\DateTimeInterface $dataInicial, \DateTimeInterface $dataFinal, string $codigoIbge)
     {

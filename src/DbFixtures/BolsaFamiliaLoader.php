@@ -55,7 +55,7 @@ class BolsaFamiliaLoader implements FixtureInterface
     /**
      * Returns an array in the format ['201601', '201602', ..., '201703', '201704', ..., '201812']
      *
-     * @return void
+     * @return array
      */
     private function getAnoMes()
     {
@@ -74,6 +74,9 @@ class BolsaFamiliaLoader implements FixtureInterface
     private function instanciateBolsaFamilia(Municipio $m, array $data)
     {
         $dataReferencia = DateTime::createFromFormat('d/m/Y', $data['dataReferencia']);
+        if (!$dataReferencia) {
+            throw new \Exception('Erro ao tentar criar a data de referência ' . $data['dataReferencia']);
+        }
         $valorTotal = (float) $data['valor'];
         $qtdBeneficiados = (int) $data['quantidadeBeneficiados'];
 
