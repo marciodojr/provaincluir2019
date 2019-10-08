@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Exception;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ConnectException;
 
 class Transparencia
 {
@@ -31,6 +32,9 @@ class Transparencia
         throw new Exception("Erro ao consultar dados do bolsa família: " . $response->getBody());
     }
 
+    // adicione aqui a função de consulta de licitações
+    // public function ...
+
     private function request(string $method, string $path, array $data)
     {
         $options = [];
@@ -43,6 +47,10 @@ class Transparencia
                 throw new Exception("Invalid method '{$method}'");
         }
 
-        return $this->client->request($method, "/api-de-dados{$path}", $options);
+        try {
+            return $this->client->request($method, "/api-de-dados{$path}", $options);
+        } catch (ConnectException $e) {
+            throw new Exception('Não foi possível estabelecer conexão com a API');
+        }
     }
 }
