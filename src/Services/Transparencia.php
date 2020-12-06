@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use DateTime;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
@@ -17,12 +18,12 @@ class Transparencia
         $this->client = $client;
     }
 
-    public function searchBolsaFamilia(string $yearMonth, string $ibgeCityCode, int $page)
+    public function searchBolsaFamilia(string $yearMonth, string $ibgeCityCode, int $pagina)
     {
         $response = $this->request('GET', '/bolsa-familia-por-municipio', [
             'mesAno' => $yearMonth,
             'codigoIbge' => $ibgeCityCode,
-            'pagina' => $page
+            'pagina' => $pagina
         ]);
 
         if ($response->getStatusCode() == 200) {
@@ -33,7 +34,21 @@ class Transparencia
     }
 
     // adicione aqui a função de consulta de licitações
-    // public function ...
+    public function searchLicitacoes(string $startDate, string $endDate, string $codigoSIAFI, int $pagina)
+    {
+        $response = $this->request('GET', '/licitacoes', [
+            'dataInicial' => $startDate,
+            'dataFinal' => $endDate,
+            'codigoOrgao' => $codigoSIAFI,
+            'pagina' => $pagina
+        ]);
+
+        if ($response->getStatusCode() == 200) {
+            return json_decode($response->getBody()->getContents(), true);
+        };
+
+        throw new Exception("Erro ao consultar dados do bolsa família: " . $response->getBody());
+    }
 
     private function request(string $method, string $path, array $data)
     {

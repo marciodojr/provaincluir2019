@@ -6,6 +6,7 @@ require 'vendor/autoload.php';
 $settings = require 'config/settings.php';
 
 use App\DbFixtures\BolsaFamiliaLoader;
+use App\DbFixtures\LicitacaoLoader;
 use App\DbFixtures\MunicipioLoader;
 use App\Services\Transparencia;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
@@ -44,5 +45,7 @@ $loader->addFixture(new MunicipioLoader());
 // Bolsa Família nos anos 2016 a 2018 em Itajubá e Pouso Alegre
 $loader->addFixture(new BolsaFamiliaLoader($transparencia, [2016, 2017, 2018], [3132404, 3152501]));
 
+// Licitacao nos anos 2016, 2017, 2018
+$loader->addFixture(new LicitacaoLoader($transparencia, new Datetime('2016-01-01'), new DateTime('2018-12-31'), '26261'));
 
 $executor->execute($loader->getFixtures());
